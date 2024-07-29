@@ -8,7 +8,7 @@ metadata:
   - cft
   - cloud
   name: demo-create-cloudformation-ec2
-  title: CloudFormation EC2 Instance
+  title: Gurudath CloudFormation EC2 Instance
 spec:
   type: infrastructure
   output:
