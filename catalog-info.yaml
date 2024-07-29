@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cms
+  annotations:
+    github.com/project-slug: Gurudath/cms
+spec:
+  type: infra
+  owner: excelfore
+  lifecycle: experimental
