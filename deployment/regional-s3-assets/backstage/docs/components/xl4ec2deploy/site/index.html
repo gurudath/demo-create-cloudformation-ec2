@@ -1,0 +1,614 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A CDK Python app for showing a basic skeleton for a CMS module">
+      
+      
+        <meta name="author" content="AWS Industrial Solutions Team">
+      
+      
+        <link rel="canonical" href="https://aws.amazon.com/solutions/implementations/connected-mobility-solution-on-aws/">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>xl4ec2deploy</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#connected-mobility-solution-on-aws-sample-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="xl4ec2deploy" class="md-header__button md-logo" aria-label="xl4ec2deploy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            xl4ec2deploy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Connected Mobility Solution on AWS - Sample Module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="xl4ec2deploy" class="md-nav__button md-logo" aria-label="xl4ec2deploy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    xl4ec2deploy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="README.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws/issues" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Tracker ↗
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://aws.amazon.com/solutions/implementations/connected-mobility-solution-on-aws/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution Homepage ↗
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.aws.amazon.com/solutions/latest/connected-mobility-solution-on-aws/solution-overview.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementation Guide ↗
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solution-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-cdk-and-solutions-constructs" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS CDK and Solutions Constructs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-installation-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacOS Installation Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-required-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Required Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build the Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-assets-to-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload Assets to S3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy on AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Scaling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collection-of-operational-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collection of Operational Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws/blob/main/source/modules/cms_sample/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="connected-mobility-solution-on-aws-sample-module">Connected Mobility Solution on AWS - Sample Module<a class="headerlink" href="#connected-mobility-solution-on-aws-sample-module" title="Permanent link">&para;</a></h1>
+<!-- markdownlint-disable-next-line -->
+<p><strong><a href="https://aws.amazon.com/solutions/implementations/connected-mobility-solution-on-aws/">Connected Mobility Solution on AWS</a></strong> | <strong><a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws/issues/new?assignees=&amp;labels=enhancement&amp;template=feature_request.md&amp;title=">🚧 Feature request</a></strong> | <strong><a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws/issues/new?assignees=&amp;labels=bug&amp;template=bug_report.md&amp;title=">🐛 Bug Report</a></strong> | <strong><a href="https://github.com/aws-solutions/connected-mobility-solution-on-aws/issues/new?assignees=&amp;labels=question&amp;template=general_question.md&amp;title=">❓ General Question</a></strong></p>
+<p><strong>Note</strong>: If you want to use the solution without building from source, navigate to the <a href="https://aws.amazon.com/solutions/implementations/connected-mobility-solution-on-aws/">AWS Solution Page</a>.</p>
+<ul>
+<li><a href="#connected-mobility-solution-on-aws---sample-module">Connected Mobility Solution on AWS - Sample Module</a><ul>
+<li><a href="#solution-overview">Solution Overview</a></li>
+<li><a href="#aws-cdk-and-solutions-constructs">AWS CDK and Solutions Constructs</a></li>
+<li><a href="#customizing-the-module">Customizing the Module</a></li>
+<li><a href="#prerequisites">Prerequisites</a><ul>
+<li><a href="#macos-installation-instructions">MacOS Installation Instructions</a></li>
+<li><a href="#clone-the-repository">Clone the Repository</a></li>
+<li><a href="#install-required-dependencies">Install Required Dependencies</a></li>
+<li><a href="#unit-test">Unit Test</a></li>
+<li><a href="#build-the-module">Build the Module</a></li>
+<li><a href="#upload-assets-to-s3">Upload Assets to S3</a></li>
+<li><a href="#deploy-on-aws">Deploy on AWS</a></li>
+<li><a href="#delete">Delete</a></li>
+</ul>
+</li>
+<li><a href="#cost-scaling">Cost Scaling</a></li>
+<li><a href="#collection-of-operational-metrics">Collection of Operational Metrics</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="solution-overview">Solution Overview<a class="headerlink" href="#solution-overview" title="Permanent link">&para;</a></h2>
+<p>CMS Sample is a practical example for implementing a new module within CMS on AWS. This module contains the necessary files
+for configuring a CMS on AWS module to be deployed via CMS Backstage. Compare the CMS Sample module file structure and files
+against existing CMS on AWS modules for a better idea of how to customize the CMS Sample module for your own usage.</p>
+<p>For more information and a detailed deployment guide, visit the
+<a href="https://aws.amazon.com/solutions/implementations/connected-mobility-solution-on-aws/">Connected Mobility Solution on AWS</a>
+solution page.</p>
+<h2 id="aws-cdk-and-solutions-constructs">AWS CDK and Solutions Constructs<a class="headerlink" href="#aws-cdk-and-solutions-constructs" title="Permanent link">&para;</a></h2>
+<p><a href="https://aws.amazon.com/cdk/">AWS Cloud Development Kit (AWS CDK)</a> and
+<a href="https://aws.amazon.com/solutions/constructs/">AWS Solutions Constructs</a> make it easier to consistently create
+well-architected infrastructure applications. All AWS Solutions Constructs are reviewed by AWS and use best
+practices established by the AWS Well-Architected Framework.</p>
+<p>In addition to the AWS Solutions Constructs, the solution uses AWS CDK directly to create infrastructure resources.</p>
+<h2 id="customizing-the-module">Customizing the Module<a class="headerlink" href="#customizing-the-module" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.python.org/downloads/">Python 3.8+</a></li>
+<li><a href="https://github.com/nvm-sh/nvm">NVM</a></li>
+<li><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">NPM 8+</a></li>
+<li><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node 18+</a></li>
+<li><a href="https://pipenv.pypa.io/en/latest/installation.html">Pipenv</a></li>
+</ul>
+<h3 id="macos-installation-instructions">MacOS Installation Instructions<a class="headerlink" href="#macos-installation-instructions" title="Permanent link">&para;</a></h3>
+<p>Pyenv <a href="https://github.com/pyenv/pyenv">Github Repository</a></p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>pyenv
+pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.10.9
+</code></pre></div></td></tr></table></div>
+<p>Pipenv <a href="https://github.com/pypa/pipenv">Github Repository</a></p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>pipenv
+pipenv<span class="w"> </span>install<span class="w"> </span>--dev
+</code></pre></div></td></tr></table></div>
+<p>NVM <a href="https://github.com/nvm-sh/nvm">Github Repository</a></p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</code></pre></div></td></tr></table></div>
+<p>NPM/Node <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Official Documentation</a></p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>nvm<span class="w"> </span>install<span class="w"> </span><span class="m">18</span>
+nvm<span class="w"> </span>use<span class="w"> </span><span class="m">18</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="clone-the-repository">Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aws-solutions/connected-mobility-solution-on-aws.git
+<span class="nb">cd</span><span class="w"> </span>connected-mobility-solution-on-aws/source/modules/cms_sample/
+</code></pre></div></td></tr></table></div>
+<h3 id="install-required-dependencies">Install Required Dependencies<a class="headerlink" href="#install-required-dependencies" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span>install
+</code></pre></div></td></tr></table></div>
+<h3 id="unit-test">Unit Test<a class="headerlink" href="#unit-test" title="Permanent link">&para;</a></h3>
+<p>After making changes, run unit tests to make sure added customization
+pass the tests:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="build-the-module">Build the Module<a class="headerlink" href="#build-the-module" title="Permanent link">&para;</a></h3>
+<p>The build script manages dependencies, builds required assets (e.g. packaged lambdas), and creates the
+AWS Cloudformation templates.</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span>build
+</code></pre></div></td></tr></table></div>
+<h3 id="upload-assets-to-s3">Upload Assets to S3<a class="headerlink" href="#upload-assets-to-s3" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span>upload
+</code></pre></div></td></tr></table></div>
+<h3 id="deploy-on-aws">Deploy on AWS<a class="headerlink" href="#deploy-on-aws" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span>deploy
+</code></pre></div></td></tr></table></div>
+<h3 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span>destroy
+</code></pre></div></td></tr></table></div>
+<h2 id="cost-scaling">Cost Scaling<a class="headerlink" href="#cost-scaling" title="Permanent link">&para;</a></h2>
+<p>There is no cost the CMS Sample module.</p>
+<p>For more details, see the
+<a href="https://docs.aws.amazon.com/solutions/latest/connected-mobility-solution-on-aws/cost.html">implementation guide</a>.</p>
+<h2 id="collection-of-operational-metrics">Collection of Operational Metrics<a class="headerlink" href="#collection-of-operational-metrics" title="Permanent link">&para;</a></h2>
+<p>This solution collects anonymized operational metrics to help AWS improve
+the quality and features of the solution. For more information, including
+how to disable this capability, please see the
+<a href="https://docs.aws.amazon.com/solutions/latest/connected-mobility-solution-on-aws/anonymized-data-collection.html">implementation guide</a>.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License").
+You may not use this file except in compliance with the License.
+You may obtain a copy of the License at <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer", "content.action.edit"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="search/main.js"></script>
+      
+    
+  </body>
+</html>

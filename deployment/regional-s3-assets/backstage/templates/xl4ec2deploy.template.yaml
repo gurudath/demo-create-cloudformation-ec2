@@ -1,0 +1,84 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  description: A CDK Python app for showing a basic skeleton for a CMS module
+  name: xl4ec2deploy
+  tags:
+  - aws
+  - ec2
+  - cft
+  - cloud
+  title: CloudFormation EC2 Instance
+spec:
+  output:
+    links:
+    - entityRef: ${{ steps.catalogRegister.output.entityRef }}
+      icon: catalog
+      title: Open in catalog
+  owner: excelfore
+  parameters:
+  - properties:
+      componentId:
+        default: xl4ec2deploy
+        description: Unique name of the component
+        pattern: '[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z]'
+        title: Name
+        type: string
+        ui:field: EntityNamePicker
+      description:
+        default: A CDK Python app for showing a basic skeleton for a CMS module
+        description: Help others understand what this component is for.
+        title: Description
+        type: string
+      owner:
+        default: excelfore
+        description: Owner of the component
+        title: Owner
+        type: string
+        ui:field: OwnerPicker
+        ui:options:
+          catalogFilter:
+            kind:
+            - Group
+            - User
+    required:
+    - componentId
+    title: Provide the required information
+  - properties:
+      amiId:
+        description: The ID of the AMI to use for the instance.
+        title: AMI ID
+        type: string
+      instanceName:
+        description: The name of the EC2 instance to be created.
+        title: EC2 Instance Name
+        type: string
+      instanceType:
+        description: The type of EC2 instance (e.g., t2.micro).
+        title: EC2 Instance Type
+        type: string
+      keyName:
+        description: The name of the key pair to use for the instance.
+        title: Key Pair Name
+        type: string
+      region:
+        description: The AWS region to create the instance in.
+        title: Region
+        type: string
+    required:
+    - instanceName
+    - instanceType
+    - keyName
+    - amiId
+    title: EC2 Instance Details
+  steps:
+  - action: aws:xl4-create-cloudformation-stack
+    id: xl4-create-cloudformation-stack
+    input:
+      amiId: ${{ parameters.amiId }}
+      instanceName: ${{ parameters.instanceName }}
+      instanceType: ${{ parameters.instanceType }}
+      keyName: ${{ parameters.keyName }}
+      region: ${{ parameters.region }}
+    name: Create CloudFormation Stack
+  type: infrastructure

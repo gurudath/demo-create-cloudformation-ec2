@@ -1,0 +1,19 @@
+{
+  "version": "36.0.0",
+  "files": {
+    "e0a0ced715556f184598f4aa58b85768882d5d2a156ac85d96ace148f856de7d": {
+      "source": {
+        "path": "xl4ec2deploy.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "e0a0ced715556f184598f4aa58b85768882d5d2a156ac85d96ace148f856de7d.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
